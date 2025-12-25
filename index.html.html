@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Natal - Hospital Gonzaga Mota</title>
+  <style>
+    /* RESET E ESTILOS GERAIS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* FUNDO TEMÁTICO HOSPITALAR COM TOQUE NATALINO */
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0d3b1e 0%, #1a5d38 50%, #0a2d1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+      padding: 20px;
+    }
+
+    /* TEXTURA DE NEVOEIRO SUAVE */
+    body::before {
+      content: '';
+      position: fixed;
+      width: 200%;
+      height: 200%;
+      background: url('https://www.transparenttextures.com/patterns/light-wool.png');
+      opacity: .08;
+      animation: neve 20s linear infinite;
+      z-index: 0;
+    }
+    
+    @keyframes neve {
+      0% { transform: translate(0, 0) }
+      100% { transform: translate(-50%, -50%) }
+    }
+
+    /* CONTAINER PRINCIPAL */
+    .container {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* BANNER PRINCIPAL */
+    .banner {
+      background: rgba(255, 255, 255, .97);
+      padding: 3rem 4rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
+      text-align: center;
+      animation: sobe .8s ease-out;
+      width: 100%;
+      max-width: 850px;
+      border: 4px solid #2e7d32;
+      border-left: 4px solid #c62828;
+      border-right: 4px solid #c62828;
+      margin-bottom: 20px;
+    }
+    
+    @keyframes sobe {
+      0% { transform: translateY(50px); opacity: 0 }
+      100% { transform: translateY(0); opacity: 1 }
+    }
+
+    /* CABEÇALHO COM LOGO DO HOSPITAL */
+    .banner h1 {
+      font-size: 3.2rem;
+      color: #b71c1c;
+      margin-bottom: .8rem;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hospital-info {
+      background: linear-gradient(45deg, #1a5d38, #0d3b1e);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 1.8rem;
+      font-weight: bold;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      border: 2px solid #fff;
+    }
+    
+    .de-ti {
+      font-size: 1.5rem;
+      color: #c62828;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .banner p {
+      font-size: 1.3rem;
+      color: #2e7d32;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* BOTÃO INTERATIVO */
+    .cta {
+      display: inline-block;
+      background: linear-gradient(45deg, #c62828, #8e0000);
+      color: #fff;
+      padding: 1.2rem 3rem;
+      font-size: 1.3rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all .3s ease;
+      text-decoration: none;
+      box-shadow: 0 6px 15px rgba(198, 40, 40, 0.4);
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      margin: 1rem 0;
+    }
+    
+    .cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(198, 40, 40, 0.5);
+    }
+
+    /* MENSAGEM ESPECIAL COM ROLAGEM */
+    #mensagem {
+      display: none;
+      background: #fff;
+      max-width: 850px;
+      padding: 3rem 4rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
+      animation: fadeIn .6s ease-out;
+      width: 100%;
+      border: 4px solid #c62828;
+      border-left: 4px solid #2e7d32;
+      border-right: 4px solid #2e7d32;
+      position: relative;
+      z-index: 2;
+      max-height: 80vh;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+    
+    /* ESTILO DA BARRA DE ROLAGEM */
+    #mensagem::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    #mensagem::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    
+    #mensagem::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #c62828, #2e7d32);
+      border-radius: 10px;
+    }
+    
+    #mensagem::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(45deg, #8e0000, #1b5e20);
+    }
+    
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(.95) }
+      100% { opacity: 1; transform: scale(1) }
+    }
+    
+    #mensagem h2 {
+      color: #b71c1c;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      text-align: center;
+    }
+    
+    #mensagem p {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    
+    /* DESTAQUES NA MENSAGEM */
+    .destaque {
+      background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin: 2rem 0;
+      border-left: 5px solid #c62828;
+    }
+    
+    .destaque p {
+      margin-bottom: 0;
+      color: #1a5d38;
+      font-weight: 500;
+    }
+    
+    /* LISTA DE DESEJOS */
+    .lista-desejos {
+      margin: 2rem 0;
+      padding-left: 2rem;
+    }
+    
+    .lista-desejos li {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      color: #333;
+      position: relative;
+      padding-left: 10px;
+    }
+    
+    .lista-desejos li:before {
+      content: "🎁";
+      position: absolute;
+      left: -1.5rem;
+    }
+    
+    .assinatura {
+      font-style: italic;
+      font-weight: bold;
+      color: #1a5d38;
+      font-size: 1.4rem;
+      margin-top: 2.5rem;
+      text-align: center;
+      border-top: 2px dashed #ddd;
+      padding-top: 1.5rem;
+    }
+    
+    /* BOTÕES DE CONTROLE */
+    .botoes-controle {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 0.9rem 2.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all .3s;
+      font-weight: bold;
+      border: none;
+      min-width: 180px;
+    }
+    
+    .btn-voltar {
+      background: linear-gradient(45deg, #2e7d32, #1b5e20);
+      color: #fff;
+    }
+    
+    .btn-especial {
+      background: linear-gradient(45deg, #1a5d38, #0d3b1e);
+      color: #fff;
+    }
+    
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* BOTÃO PARA VOLTAR AO TOPO */
+    .btn-topo {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #c62828, #8e0000);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    
+    .btn-topo:hover {
+      transform: scale(1.1);
+    }
+
+    /* CORAÇÃO INTERATIVO */
+    .coracao-container {
+      position: fixed;
+      bottom: 80px;
+      right: 30px;
+      z-index: 3;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .coracao-container:hover {
+      transform: scale(1.1);
+    }
+    
+    .coracao {
+      width: 80px;
+      height: 80px;
+      background: #c62828;
+      position: relative;
+      transform: rotate(45deg);
+      animation: pulsar 2s infinite;
+      box-shadow: 0 0 20px rgba(198, 40, 40, 0.5);
+    }
+    
+    .coracao:before,
+    .coracao:after {
+      content: '';
+      width: 80px;
+      height: 80px;
+      background: #c62828;
+      border-radius: 50%;
+      position: absolute;
+    }
+    
+    .coracao:before {
+      top: -40px;
+      left: 0;
+    }
+    
+    .coracao:after {
+      top: 0;
+      left: -40px;
+    }
+    
+    .coracao-texto {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      color: white;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-align: center;
+      width: 100px;
+    }
+    
+    @keyframes pulsar {
+      0% { transform: rotate(45deg) scale(1); }
+      50% { transform: rotate(45deg) scale(1.1); }
+      100% { transform: rotate(45deg) scale(1); }
+    }
+
+    /* ESTRELAS PISCANTES */
+    .estrela {
+      position: fixed;
+      width: 15px;
+      height: 15px;
+      background: white;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      opacity: 0.8;
+      animation: brilhar 3s infinite alternate;
+      z-index: 1;
+    }
+    
+    @keyframes brilhar {
+      0% { opacity: 0.3; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* PRESENTES INTERATIVOS */
+    .presentes-container {
+      position: fixed;
+      bottom: 80px;
+      left: 30px;
+      z-index: 3;
+      display: none;
+    }
+    
+    .presente {
+      width: 70px;
+      height: 70px;
+      background: #c62828;
+      position: relative;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .presente:nth-child(2) {
+      background: #2e7d32;
+      margin-left: 20px;
+    }
+    
+    .presente:nth-child(3) {
+      background: #1a5d38;
+      margin-left: 40px;
+    }
+    
+    .presente:hover {
+      transform: translateY(-10px);
+    }
+    
+    .presente-laco {
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      background: gold;
+      top: 35px;
+      left: 0;
+    }
+    
+    .presente-laco:before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 100%;
+      background: gold;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* ÁRVORE DE NATAL INTERATIVA */
+    .arvore-container {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      z-index: 3;
+      cursor: pointer;
+      display: none;
+    }
+    
+    .arvore {
+      width: 0;
+      height: 0;
+      border-left: 45px solid transparent;
+      border-right: 45px solid transparent;
+      border-bottom: 70px solid #1b5e20;
+      position: relative;
+    }
+    
+    .arvore:before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 40px solid transparent;
+      border-right: 40px solid transparent;
+      border-bottom: 60px solid #0d3b1e;
+      position: absolute;
+      top: 20px;
+      left: -40px;
+    }
+    
+    .arvore:after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 35px solid transparent;
+      border-right: 35px solid transparent;
+      border-bottom: 50px solid #2e7d32;
+      position: absolute;
+      top: 40px;
+      left: -35px;
+    }
+    
+    .tronco {
+      width: 25px;
+      height: 40px;
+      background: #8B4513;
+      position: absolute;
+      top: 140px;
+      left: -12px;
+    }
+    
+    .estrela-topo {
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 35px solid gold;
+      position: absolute;
+      top: -35px;
+      left: -20px;
+      animation: girar 5s linear infinite;
+    }
+    
+    @keyframes girar {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ANIMAÇÃO DE NEVE */
+    .floco-neve {
+      position: fixed;
+      background-color: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      z-index: 1;
+      animation: cair linear infinite;
+    }
+    
+    @keyframes cair {
+      0% { transform: translateY(-10vh) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* MENSAGEM FLUTUANTE */
+    .mensagem-flutuante {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      display: none;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      border: 3px solid #c62828;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    
+    .mensagem-flutuante::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    .mensagem-flutuante::-webkit-scrollbar-thumb {
+      background: #c62828;
+      border-radius: 4px;
+    }
+    
+    .fechar-mensagem {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #c62828;
+      z-index: 101;
+    }
+    
+    /* SETA INDICADORA DE ROLAGEM */
+    .seta-rolagem {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: pular 1.5s infinite;
+      color: #c62828;
+      font-size: 2rem;
+      display: none;
+    }
+    
+    @keyframes pular {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      .banner, #mensagem {
+        padding: 2rem;
+      }
+      
+      .banner h1 {
+        font-size: 2.5rem;
+      }
+      
+      #mensagem h2 {
+        font-size: 2rem;
+      }
+      
+      .botoes-controle {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .coracao-container,
+      .presentes-container {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        margin: 20px auto;
+        display: flex !important;
+        justify-content: center;
+      }
+      
+      .arvore-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 20px auto;
+        display: flex !important;
+        justify-content: center;
+      }
+      
+      .presente {
+        margin: 0 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CONTAINER PRINCIPAL -->
+  <div class="container">
+    
+    <!-- BANNER INICIAL -->
+    <div class="banner" id="banner">
+      <h1>🎄 Feliz Natal! 🎄</h1>
+      
+      <div class="hospital-info">
+        Hospital Distrital Gonzaga Mota José Walter
+      </div>
+      
+      <div class="de-ti">
+        💻 Da Equipe de TI para todos os Colaboradores 💻
+      </div>
+      
+      <p>Que esta celebração renove nossas energias para continuarmos nossa missão de cuidar e salvar vidas!</p>
+      
+      <a href="#" class="cta" onclick="mostrarMensagem(); return false;">Abrir Mensagem Especial</a>
+      
+      <div style="margin-top: 2rem; font-size: 0.95rem; color: #666; font-style: italic;">
+        P.S.: A mensagem especial tem conteúdo longo - role para baixo para ler tudo!
+      </div>
+    </div>
+
+    <!-- MENSAGEM ESPECIAL COM ROLAGEM -->
+    <div id="mensagem">
+      <h2>🌟 Mensagem de Natal 🌟</h2>
+      
+      <p>Prezados colaboradores do <strong>Hospital Distrital Gonzaga Mota José Walter</strong>,</p>
+      
+      <p>Neste Natal, a Equipe de Tecnologia da Informação deseja expressar nossa imensa gratidão e admiração pelo trabalho incansável de cada um de vocês. Em um ano desafiador, vocês demonstraram resiliência, dedicação e compaixão que vão além de suas funções.</p>
+      
+      <div class="destaque">
+        <p>Que a luz do Natal ilumine seus caminhos, trazendo paz aos seus corações e alegria aos seus lares. Que o espírito de solidariedade que vocês praticam diariamente nos corredores do hospital retorne para vocês em forma de amor, saúde e felicidade.</p>
+      </div>
+      
+      <p>Em 2026, desejamos que nossos sistemas funcionem sempre perfeitamente para apoiar vocês, que as telas carreguem rapidamente quando mais precisarem, e que a tecnologia seja uma aliada ainda mais forte no cuidado aos nossos pacientes.</p>
+      
+      <h3 style="color: #1a5d38; margin: 2rem 0 1rem;">Nossos Desejos para Você:</h3>
+      
+      <ul class="lista-desejos">
+        <li>Saúde plena para continuar seu trabalho essencial</li>
+        <li>Reconhecimento pelo seu valor inestimável</li>
+        <li>Momento de descanso merecido com sua família</li>
+        <li>Paz interior que transcende os desafios diários</li>
+        <li>Força renovada para cada novo dia de trabalho</li>
+        <li>Sabedoria nas decisões que impactam vidas</li>
+        <li>Companheirismo entre todos os colegas de trabalho</li>
+        <li>Realização pessoal e profissional</li>
+      </ul>
+      
+      <p>Que possamos continuar trabalhando juntos, unindo tecnologia e humanização para oferecer o melhor atendimento à nossa comunidade. Cada linha de código que escrevemos, cada sistema que implementamos, tem como único propósito facilitar seu trabalho e melhorar o cuidado com nossos pacientes.</p>
+      
+      <div class="destaque">
+        <p>Lembramos que por trás de cada tela, cada impressora, cada sistema, existe uma equipe dedicada que se sente honrada em poder contribuir, mesmo que indiretamente, para a missão nobre que vocês executam diariamente.</p>
+      </div>
+      
+      <p>Que 2026 seja um ano de conquistas compartilhadas, onde a tecnologia e o cuidado humano caminhem lado a lado, criando um ambiente hospitalar ainda mais eficiente e acolhedor para todos.</p>
+      
+      <p>Que cada desafio seja superado com união, cada vitória seja celebrada com alegria, e cada dia de trabalho seja uma oportunidade de fazer a diferença na vida de alguém.</p>
+      
+      <div class="assinatura">
+        Com respeito, gratidão e admiração,<br>
+        <strong>Equipe de TI - Hospital Distrital Gonzaga Mota José Walter</strong><br>
+        <span style="font-size: 1rem; color: #666;">"Tecnologia com humanidade, inovação com compaixão"</span>
+      </div>
+      
+      <div class="botoes-controle">
+        <button class="btn btn-voltar" onclick="fecharMensagem()">Voltar ao Banner</button>
+        <button class="btn btn-especial" onclick="mostrarMensagemEspecial()">Mensagem Bônus</button>
+      </div>
+      
+      <div class="seta-rolagem" id="setaRolagem">↓</div>
+    </div>
+  </div>
+
+  <!-- BOTÃO PARA VOLTAR AO TOPO -->
+  <button class="btn-topo" id="btnTopo" onclick="rolarParaTopo()">↑</button>
+  
+  <!-- ELEMENTOS INTERATIVOS -->
+  <div class="coracao-container" id="coracao" style="display: none;" onclick="mostrarAgradecimento()">
+    <div class="coracao"></div>
+    <div class="coracao-texto">Obrigado!</div>
+  </div>
+  
+  <div class="presentes-container" id="presentes">
+    <div class="presente" onclick="abrirPresente(1)">
+      <div class="presente-laco"></div>
+    </div>
+    <div class="presente" onclick="abrirPresente(2)">
+      <div class="presente-laco"></div>
+    </div>
+    <div class="presente" onclick="abrirPresente(3)">
+      <div class="presente-laco"></div>
+    </div>
+  </div>
+  
+  <div class="arvore-container" id="arvore" onclick="mostrarSurpresaArvore()">
+    <div class="arvore">
+      <div class="estrela-topo"></div>
+    </div>
+    <div class="tronco"></div>
+  </div>
+
+  <!-- MENSAGEM FLUTUANTE -->
+  <div class="mensagem-flutuante" id="mensagemFlutuante">
+    <button class="fechar-mensagem" onclick="fecharMensagemFlutuante()">×</button>
+    <div id="conteudoMensagem"></div>
+  </div>
+
+  <script>
+    // Inicialização dos elementos visuais
+    function inicializarEfeitos() {
+      criarEstrelas();
+      criarNeve();
+    }
+    
+    // Criar estrelas piscantes
+    function criarEstrelas() {
+      const cores = ['#ffffff', '#ffeb3b', '#4caf50', '#2196f3'];
+      for (let i = 0; i < 25; i++) {
+        const estrela = document.createElement('div');
+        estrela.classList.add('estrela');
+        estrela.style.left = Math.random() * 100 + 'vw';
+        estrela.style.top = Math.random() * 100 + 'vh';
+        estrela.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
+        estrela.style.animationDuration = (Math.random() * 2 + 1) + 's';
+        estrela.style.animationDelay = Math.random() * 5 + 's';
+        document.body.appendChild(estrela);
+      }
+    }
+    
+    // Criar efeito de neve
+    function criarNeve() {
+      for (let i = 0; i < 40; i++) {
+        const floco = document.createElement('div');
+        floco.classList.add('floco-neve');
+        floco.style.left = Math.random() * 100 + 'vw';
+        floco.style.width = Math.random() * 6 + 3 + 'px';
+        floco.style.height = floco.style.width;
+        floco.style.animationDuration = Math.random() * 3 + 2 + 's';
+        floco.style.animationDelay = Math.random() * 5 + 's';
+        document.body.appendChild(floco);
+      }
+    }
+    
+    // Mostrar mensagem principal
+    function mostrarMensagem() {
+      document.getElementById('banner').style.display = 'none';
+      const mensagem = document.getElementById('mensagem');
+      mensagem.style.display = 'block';
+      document.getElementById('coracao').style.display = 'block';
+      document.getElementById('presentes').style.display = 'block';
+      document.getElementById('arvore').style.display = 'block';
+      document.getElementById('setaRolagem').style.display = 'block';
+      
+      // Rolar para o topo da mensagem
+      setTimeout(() => {
+        mensagem.scrollTop = 0;
+      }, 100);
+    }
+    
+    // Fechar mensagem e voltar ao banner
+    function fecharMensagem() {
+      document.getElementById('mensagem').style.display = 'none';
+      document.getElementById('banner').style.display = 'block';
+      document.getElementById('coracao').style.display = 'none';
+      document.getElementById('presentes').style.display = 'none';
+      document.getElementById('arvore').style.display = 'none';
+      document.getElementById('setaRolagem').style.display = 'none';
+      document.getElementById('btnTopo').style.display = 'none';
+    }
+    
+    // Controlar visibilidade do botão de voltar ao topo
+    document.getElementById('mensagem').addEventListener('scroll', function() {
+      const btnTopo = document.getElementById('btnTopo');
+      if (this.scrollTop > 100) {
+        btnTopo.style.display = 'block';
+      } else {
+        btnTopo.style.display = 'none';
+      }
+    });
+    
+    // Rolar para o topo da mensagem
+    function rolarParaTopo() {
+      document.getElementById('mensagem').scrollTop = 0;
+    }
+    
+    // Mostrar mensagem especial
+    function mostrarMensagemEspecial() {
+      const conteudo = `
+        <h3 style="color: #c62828; margin-bottom: 1rem;">🎁 Presente da Equipe de TI 🎁</h3>
+        <p>Como presente simbólico, oferecemos a todos os colaboradores nosso mais sinceros votos:</p>
+        <ul style="text-align: left; margin: 1.5rem 0; padding-left: 1.5rem;">
+          <li><strong>Saúde</strong> que nunca falte</li>
+          <li><strong>Amor</strong> que se multiplique</li>
+          <li><strong>Coragem</strong> que supere qualquer medo</li>
+          <li><strong>Sonhos</strong> que ganhem asas — e pistas de decolagem</li>
+          <li><strong>Trabalho</strong> que faça sentido e traga abundância</li>
+          <li><strong>Momentos</strong> de paz tão grandes quanto as vitórias</li>
+          <li><strong>Amizades</strong> que aqueçam os dias frios</li>
+          <li><strong>Aprendizados</strong> que transformem desafios em sabedoria</li>
+            
+        </ul>
+        <p style="font-style: italic; color: #1a5d38;">Que 2026 seja um ano de recomeços felizes, de projetos concluídos e de surpresas boas que ultrapassem as expectativas.
+Viva cada dia com gratidão, espalhe gentileza e lembre-se: o futuro se constrói hoje, com cada pequena atitude.
+Boas energias, novos caminhos e um brilhante 2026 para todos nós!.</p>
+      `;
+      
+      document.getElementById('conteudoMensagem').innerHTML = conteudo;
+      document.getElementById('mensagemFlutuante').style.display = 'block';
+    }
+    
+    // Mostrar agradecimento ao clicar no coração
+    function mostrarAgradecimento() {
+      const conteudo = `
+        <h3 style="color: #c62828; margin-bottom: 1rem;">❤️ Agradecimento Especial ❤️</h3>
+        <p>Obrigado por seu trabalho dedicado no Hospital Gonzaga Mota!</p>
+        <p>Cada colaborador é essencial para nosso propósito de cuidar da saúde da comunidade.</p>
+        <p>Que seu Natal seja repleto do mesmo carinho que você oferece aos nossos pacientes diariamente.</p>
+        <div style="margin-top: 1.5rem; font-size: 0.9rem; color: #666; font-style: italic;">
+          "A saúde é o maior presente, e vocês são os guardiões deste tesouro."
+        </div>
+        <div style="margin-top: 1.5rem; font-size: 2rem;">
+          🏥❤️🎄
+        </div>
+      `;
+      
+      document.getElementById('conteudoMensagem').innerHTML = conteudo;
+      document.getElementById('mensagemFlutuante').style.display = 'block';
+    }
+    
+    // Abrir presentes interativos
+    function abrirPresente(numero) {
+      const mensagens = [
+        "🎁 <strong>Presente 1:</strong> Desejo de saúde e energia renovada para 2026! Que cada novo dia traga vitalidade para seu importante trabalho.",
+        "🎁 <strong>Presente 2:</strong> Que o novo ano traga reconhecimento e crescimento profissional! Que suas habilidades sejam valorizadas e suas conquistas celebradas.",
+        "🎁 <strong>Presente 3:</strong> Desejamos momentos de descanso e alegria com sua família! Que o tempo em casa seja tão especial quanto seu tempo cuidando dos outros."
+      ];
+      
+      const emojis = ['💪', '⭐', '👨‍👩‍👧‍👦'];
+      const cores = ['#c62828', '#2e7d32', '#1a5d38'];
+      const conteudo = `
+        <h3 style="color: ${cores[numero-1]}; margin-bottom: 1rem;">${mensagens[numero-1]}</h3>
+        <p>A equipe de TI agradece por fazer parte desta família do Hospital Gonzaga Mota.</p>
+        <div style="margin-top: 1.5rem; font-size: 3rem;">
+          ${emojis[numero-1]}
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+          Clique em qualquer lugar para fechar esta mensagem
+        </p>
+      `;
+      
+      document.getElementById('conteudoMensagem').innerHTML = conteudo;
+      document.getElementById('mensagemFlutuante').style.display = 'block';
+      
+      // Efeito visual no presente
+      const presente = document.querySelectorAll('.presente')[numero-1];
+      presente.style.transform = 'translateY(-20px) scale(1.2)';
+      setTimeout(() => {
+        presente.style.transform = 'translateY(-10px)';
+      }, 500);
+    }
+    
+    // Mostrar surpresa da árvore
+    function mostrarSurpresaArvore() {
+      const conteudo = `
+        <h3 style="color: #1b5e20; margin-bottom: 1rem;">🎄 Árvore dos Desejos 🎄</h3>
+        <p>Ao fazer um pedido nesta árvore simbólica, a equipe de TI deseja que:</p>
+        <p style="font-weight: bold; color: #c62828; margin: 1rem 0; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+          Em 2026, todos os sistemas funcionem perfeitamente para apoiar seu trabalho essencial!
+        </p>
+        <p>Que nossa tecnologia seja cada vez mais uma aliada no cuidado com a vida, e que possamos continuar evoluindo juntos.</p>
+        <div style="margin-top: 1.5rem; font-size: 2rem;">
+          🌟✨🌟
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+          Faça seu pedido de Natal mentalmente e acredite que se realizará!
+        </p>
+      `;
+      
+      document.getElementById('conteudoMensagem').innerHTML = conteudo;
+      document.getElementById('mensagemFlutuante').style.display = 'block';
+      
+      // Efeito visual na árvore
+      const arvore = document.getElementById('arvore');
+      arvore.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        arvore.style.transform = 'scale(1)';
+      }, 500);
+    }
+    
+    // Fechar mensagem flutuante
+    function fecharMensagemFlutuante() {
+      document.getElementById('mensagemFlutuante').style.display = 'none';
+    }
+    
+    // Inicializar quando a página carregar
+    window.onload = function() {
+      inicializarEfeitos();
+      
+      // Mensagem de boas-vindas
+      setTimeout(() => {
+        if (document.getElementById('banner').style.display !== 'none') {
+          const conteudo = `
+            <h3 style="color: #1a5d38; margin-bottom: 1rem;">Bem-vindo(a)!</h3>
+            <p>Esta é nossa mensagem de Natal especial para todos os colaboradores do <strong>Hospital Distrital Gonzaga Mota José Walter</strong>.</p>
+            <p>Clique em "Abrir Mensagem Especial" para ver nossa mensagem completa e interagir com os elementos da página.</p>
+            <div style="margin-top: 1rem; font-size: 2rem;">
+              🏥🎄❤️
+            </div>
+          `;
+          
+          document.getElementById('conteudoMensagem').innerHTML = conteudo;
+          document.getElementById('mensagemFlutuante').style.display = 'block';
+        }
+      }, 1500);
+    };
+  </script>
+</body>
+</html>
